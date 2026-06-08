@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SERS — Smart Emergency Response System</title>
+
+  <!-- Leaflet Map -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" />
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400;700&family=IBM+Plex+Sans:wght@300;400;500;600&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="css/style.css?v=20260528-5" />
+</head>
+<body class="auth-locked">
+
+  <section class="login-screen" id="loginScreen">
+    <div class="login-panel">
+      <div class="brand-badge login-badge">
+        <span class="pulse-dot"></span>
+        SECURE ACCESS
+      </div>
+      <h1 class="login-title">SERS Login</h1>
+      <p class="login-subtitle">Smart Emergency Response System role gateway</p>
+
+      <form class="login-form" id="loginForm">
+        <div class="form-group">
+          <label class="form-label" for="usernameInput">Username</label>
+          <input class="form-input" id="usernameInput" name="username" autocomplete="username" required />
+        </div>
+        <div class="form-group">
+          <label class="form-label" for="passwordInput">Password</label>
+          <input class="form-input" id="passwordInput" name="password" type="password" autocomplete="current-password" required />
+        </div>
+        <button class="dispatch-btn login-btn" id="loginBtn" type="submit">
+          <span class="dispatch-icon">&gt;</span>
+          Sign In
+        </button>
+        <div class="login-error" id="loginError"></div>
+      </form>
+
+      <div class="demo-credentials">
+        <div>Dispatcher: dispatcher / dispatch123</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- HEADER -->
+  <header class="header">
+    <div class="header-brand">
+      <div class="brand-badge">
+        <span class="pulse-dot"></span>
+        LIVE
+      </div>
+      <h1 class="brand-title">SERS</h1>
+      <span class="brand-sub">Smart Emergency Response System</span>
+    </div>
+    <div class="header-status" id="systemStatus">
+      <span class="status-icon">⬤</span>
+      <span class="status-text">Connecting...</span>
+    </div>
+    <div class="auth-user" id="authUser">
+      <span id="authRole">Guest</span>
+      <button class="logout-btn" id="logoutBtn" type="button">Logout</button>
+    </div>
+  </header>
+
+  <!-- MAIN LAYOUT -->
+  <div class="layout">
+
+    <!-- LEFT PANEL: Dispatch Form -->
+    <aside class="panel panel-left">
+      <section class="panel-section">
+        <h2 class="section-title">Report Incident</h2>
+
+        <div class="form-group">
+          <label class="form-label">Incident Type</label>
+          <div class="type-selector" id="typeSelector">
+            <button class="type-btn active" data-type="medical">
+              <span class="type-icon">🏥</span>
+              Medical
+            </button>
+            <button class="type-btn" data-type="fire">
+              <span class="type-icon">🔥</span>
+              Fire
+            </button>
+            <button class="type-btn" data-type="police">
+              <span class="type-icon">🚔</span>
+              Police
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Severity</label>
+          <div class="severity-selector" id="severitySelector">
+            <button class="sev-btn" data-sev="LOW">
+              <span class="sev-dot low"></span> LOW
+            </button>
+            <button class="sev-btn active" data-sev="MEDIUM">
+              <span class="sev-dot medium"></span> MEDIUM
+            </button>
+            <button class="sev-btn" data-sev="HIGH">
+              <span class="sev-dot high"></span> HIGH
+            </button>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label">Incident Location</label>
+          <div class="location-select-wrap">
+            <select class="form-select" id="nodeSelect">
+              <option value="">— Click map or select node —</option>
+            </select>
+          </div>
+          <p class="form-hint">↑ Or click any node on the map</p>
+        </div>
+
+        <div class="form-group">
+          <label class="form-label" for="incidentNote">Incident Note</label>
+          <textarea class="form-textarea" id="incidentNote" rows="4" placeholder="Brief condition, landmarks, caller details"></textarea>
+        </div>
+
+        <button class="dispatch-btn" id="dispatchBtn" disabled>
+          <span class="dispatch-icon">⚡</span>
+          Dispatch Emergency
+        </button>
+      </section>
+
+      <!-- RESPONSE CARD -->
+      <section class="panel-section" id="responseSection" style="display:none">
+        <h2 class="section-title">Dispatch Result</h2>
+        <div class="response-card" id="responseCard"></div>
+      </section>
+    </aside>
+
+    <!-- CENTER: MAP -->
+    <main class="map-container">
+      <div id="map"></div>
+      <div class="map-legend">
+        <div class="legend-item"><span class="legend-dot" style="background:#ef4444"></span> Incident</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#3b82f6"></span> Medical Hub</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#f97316"></span> Fire Station</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#8b5cf6"></span> Police</div>
+        <div class="legend-item"><span class="legend-dot" style="background:#6b7280"></span> Road Node</div>
+      </div>
+    </main>
+
+    <!-- RIGHT PANEL: Hubs + Log -->
+    <aside class="panel panel-right">
+      <section class="panel-section">
+        <h2 class="section-title">Active Hubs</h2>
+        <div class="hub-list" id="hubList">
+          <div class="loading-shimmer"></div>
+          <div class="loading-shimmer"></div>
+          <div class="loading-shimmer"></div>
+        </div>
+      </section>
+
+      <section class="panel-section">
+        <h2 class="section-title">Dispatch Log</h2>
+        <div class="log-list" id="logList">
+          <div class="log-empty">No dispatches yet.</div>
+        </div>
+      </section>
+    </aside>
+
+  </div>
+
+  <script src="js/map.js?v=20260528-5"></script>
+  <script src="js/dispatch.js?v=20260528-5"></script>
+  <script src="js/main.js?v=20260528-5"></script>
+</body>
+</html>

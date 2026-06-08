@@ -1,0 +1,33 @@
+{
+  "nodes": [
+    { "id": 0, "label": "Clock Tower", "lat": 30.3242, "lng": 78.0432 },
+    { "id": 1, "label": "ISBT Dehradun", "lat": 30.3158, "lng": 78.0322 },
+    { "id": 2, "label": "Rajpur Road", "lat": 30.3400, "lng": 78.0524 },
+    { "id": 3, "label": "Patel Nagar", "lat": 30.3053, "lng": 78.0217 },
+    { "id": 4, "label": "Ballupur Chowk", "lat": 30.3322, "lng": 78.0680 },
+    { "id": 5, "label": "Karanpur", "lat": 30.3175, "lng": 78.0523 },
+    { "id": 6, "label": "Race Course", "lat": 30.3265, "lng": 78.0260 },
+    { "id": 7, "label": "GMS Road", "lat": 30.3480, "lng": 78.0380 },
+    { "id": 8, "label": "Sahastradhara", "lat": 30.3700, "lng": 78.1020 },
+    { "id": 9, "label": "Clement Town", "lat": 30.2920, "lng": 78.0100 }
+  ],
+  "edges": [
+    { "source": 0, "target": 1, "weight": 3.5 },
+    { "source": 0, "target": 2, "weight": 2.8 },
+    { "source": 0, "target": 5, "weight": 2.0 },
+    { "source": 0, "target": 6, "weight": 4.2 },
+    { "source": 1, "target": 3, "weight": 3.0 },
+    { "source": 1, "target": 5, "weight": 2.5 },
+    { "source": 2, "target": 4, "weight": 3.3 },
+    { "source": 2, "target": 7, "weight": 4.0 },
+    { "source": 3, "target": 6, "weight": 3.8 },
+    { "source": 3, "target": 9, "weight": 5.1 },
+    { "source": 4, "target": 8, "weight": 6.2 },
+    { "source": 5, "target": 4, "weight": 3.6 },
+    { "source": 6, "target": 9, "weight": 4.5 },
+    { "source": 7, "target": 8, "weight": 5.5 },
+    { "source": 7, "target": 2, "weight": 4.0 },
+    { "source": 8, "target": 4, "weight": 6.2 },
+    { "source": 9, "target": 3, "weight": 5.1 }
+  ]
+}

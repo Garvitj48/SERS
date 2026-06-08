@@ -1,0 +1,68 @@
+[
+  {
+    "id": 101,
+    "name": "AIIMS Rishikesh Trauma",
+    "node_id": 2,
+    "type": "medical",
+    "vehicles": 5,
+    "beds": 20,
+    "officers": 0,
+    "lat": 30.3400,
+    "lng": 78.0524
+  },
+  {
+    "id": 102,
+    "name": "Doon Hospital Emergency",
+    "node_id": 0,
+    "type": "medical",
+    "vehicles": 4,
+    "beds": 15,
+    "officers": 0,
+    "lat": 30.3242,
+    "lng": 78.0432
+  },
+  {
+    "id": 103,
+    "name": "Patel Nagar Fire Station",
+    "node_id": 3,
+    "type": "fire",
+    "vehicles": 4,
+    "beds": 0,
+    "officers": 0,
+    "lat": 30.3053,
+    "lng": 78.0217
+  },
+  {
+    "id": 104,
+    "name": "Rajpur Fire Station",
+    "node_id": 7,
+    "type": "fire",
+    "vehicles": 3,
+    "beds": 0,
+    "officers": 0,
+    "lat": 30.3480,
+    "lng": 78.0380
+  },
+  {
+    "id": 105,
+    "name": "Karanpur Police Station",
+    "node_id": 5,
+    "type": "police",
+    "vehicles": 6,
+    "beds": 0,
+    "officers": 12,
+    "lat": 30.3175,
+    "lng": 78.0523
+  },
+  {
+    "id": 106,
+    "name": "Clock Tower PCR",
+    "node_id": 6,
+    "type": "police",
+    "vehicles": 4,
+    "beds": 0,
+    "officers": 8,
+    "lat": 30.3265,
+    "lng": 78.0260
+  }
+]

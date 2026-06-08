@@ -1,0 +1,6 @@
+C:\SERS\backend\main.cpp;C:\SERS\backend\build\sers_engine.dir\Debug\main.obj
+C:\SERS\backend\graph\Graph.cpp;C:\SERS\backend\build\sers_engine.dir\Debug\Graph.obj
+C:\SERS\backend\algorithms\Dijkstra.cpp;C:\SERS\backend\build\sers_engine.dir\Debug\Dijkstra.obj
+C:\SERS\backend\dispatch\DispatchManager.cpp;C:\SERS\backend\build\sers_engine.dir\Debug\DispatchManager.obj
+C:\SERS\backend\resources\ResourceManager.cpp;C:\SERS\backend\build\sers_engine.dir\Debug\ResourceManager.obj
+C:\SERS\backend\api\Routes.cpp;C:\SERS\backend\build\sers_engine.dir\Debug\Routes.obj

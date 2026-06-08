@@ -1,0 +1,10 @@
+^C:\SERS\BACKEND\BUILD\CMAKEFILES\B63A0CD8A992EA1AD8073E8FBCC1E5C1\GENERATE.STAMP.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/SERS/backend -BC:/SERS/backend/build --check-stamp-list CMakeFiles/generate.stamp.list --vs-solution-file C:/SERS/backend/build/sers_engine.slnx
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
